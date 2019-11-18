@@ -50,7 +50,7 @@
 #define maxBuyerValue 20
 #define maxSellerValue 20
 
-#define numThreads 8
+#define numThreads 4
 
 //	Define an agent...
 typedef struct TraderAgent
