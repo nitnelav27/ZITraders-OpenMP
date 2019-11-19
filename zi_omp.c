@@ -109,7 +109,8 @@ void DoTrades ()
 {
 	int i, buyerIndex, sellerIndex;
 	int bidPrice, askPrice, transactionPrice;
-	
+
+#pragma omp parallel for private(buyerIndex, bidPrice, sellerIndex, askPrice, transactionPrice)
 	for (i=1; i<=MaxNumberOfTrades; i=i+1)
 	{
 		//	Pick a buyer at random, then pick a 'bid' price randomly between 1 and the agent's private value;
@@ -186,13 +187,19 @@ void ComputeStatistics(clock_t elapsedTime)
 
 void OpenMarket()
 {
-	clock_t startTime, endTime;
-	startTime = clock();
+	clock_t startTime1, endTime1;
+	time_t startTime2, endTime2;
+	
+	startTime1 = clock();
+	time(&startTime2);
 	
 	DoTrades();
-	endTime = clock();
+	endTime1 = clock();
+	time(&endTime2);
 	
-	ComputeStatistics(endTime - startTime);
+	ComputeStatistics(endTime1 - startTime1);
+	endTime2 = (endTime2 - startTime2);
+	printf("Wall time was %d seconds\n", (int ) endTime2);
 	
 };
 
