@@ -199,7 +199,7 @@ void OpenMarket()
 	
 	ComputeStatistics(endTime1 - startTime1);
 	endTime2 = (endTime2 - startTime2);
-	printf("Wall time was %d seconds\n", (int ) endTime2);
+	printf("Wall time was %f seconds\n", (double) endTime2);
 	
 };
 
