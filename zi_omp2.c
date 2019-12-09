@@ -22,6 +22,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <omp.h>
 
 //////////////////////////////////////////////
 //
@@ -187,21 +188,21 @@ void ComputeStatistics(time_t elapsedTime)
 
 void OpenMarket()
 {
-        time_t start = time(NULL);
+        double start = omp_get_wtime();
 	
 	DoTrades();
 
-	time_t middle = time(NULL);
+        clock_t middle = clock() - start;
 
-	double diff1 = difftime(middle, start);
+	double diff1 = ((double)middle)/CLOCKS_PER_SEC;
 		
 	ComputeStatistics(diff1);
 	
-	//time_t end = time(NULL);
+        double end = omp_get_wtime();
 
-	//double diff2 = difftime(end, start);
+	double diff2 = end - start;
 	
-	//printf("Wall time was %f seconds\n", diff2);
+	printf("Wall time was %f seconds\n", diff2);
 	
 };
 
