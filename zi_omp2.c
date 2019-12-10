@@ -111,7 +111,7 @@ void DoTrades ()
 	int i, buyerIndex, sellerIndex;
 	int bidPrice, askPrice, transactionPrice;
 
-#pragma omp parallel for private(buyerIndex, bidPrice, sellerIndex, askPrice, transactionPrice)
+#pragma omp parallel for private(buyerIndex, bidPrice, sellerIndex, askPrice, transactionPrice) schedule(dynamic)
 	for (i=1; i<=MaxNumberOfTrades; i=i+1)
 	{
 		//	Pick a buyer at random, then pick a 'bid' price randomly between 1 and the agent's private value;
@@ -183,7 +183,7 @@ void ComputeStatistics(time_t elapsedTime)
 	avgPrice = (double) sum / (double) N;
 	sd = sqrt((sum2 - (double) N * pow(avgPrice, 2)) / (double) (N - 1));
 	printf("The average price = %f and the s.d. is %f\n", avgPrice, sd);
-	printf("The execution time was %f seconds\n", elapsedTime);
+	//printf("The execution time was %f seconds\n", elapsedTime);
 };	//	ComputeStatistics()
 
 void OpenMarket()
