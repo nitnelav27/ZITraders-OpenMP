@@ -39,11 +39,11 @@
 #define buyer true
 #define seller false
 
-#define MaxNumberOfTrades 10000000
+#define MaxNumberOfTrades 1000000
 
 //	Specify the number of agents of each type...
-#define numberOfBuyers 100000
-#define numberOfSellers 100000
+#define numberOfBuyers 10000
+#define numberOfSellers 10000
 
 //	Specify the maximum internal values...
 #define maxBuyerValue 20
