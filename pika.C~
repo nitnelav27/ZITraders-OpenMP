@@ -1,0 +1,33 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void inittime() {
+srand(time(NULL));
+};
+
+int main() {
+
+  inittime();
+
+  
+  printf("\n Using Percentage\n");
+
+  int i, index;
+
+  for (i = 0; i < 5; i++)
+    {
+      index = rand() % 100;
+      printf("%d \n", index);
+    };
+
+  printf("\n Using multiplication\n");
+
+  for (i = 0; i < 5; i++)
+    {
+      index = rand() * 100;
+      printf("%d \n", index);
+    };
+
+};
